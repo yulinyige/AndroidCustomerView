@@ -1,10 +1,13 @@
 package com.yulinyige.customerview;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.yulinyige.customerview.startup.StartupActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,29 +34,29 @@ public class MainActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
+        switch (position) {
+            case 0:
+                startActivity(StartupActivity.class);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void startActivity(Class<?> cls) {
+        startActivity(new Intent(this, cls));
     }
 
     private List<Map<String, String>> createData() {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-        data.add(createItem("ShapeImageView", "可设置形状(圆形、圆角矩形)的ImageView"));
-        data.add(createItem("MaskImageView/STextView/SView", "可直接在xml布局中设置点击效果"));
-        data.add(createItem("RatioImageView", "可设置宽高比例的ImageView"));
-        data.add(createItem("ScrollPickerView", "滚动选择器，可实现生日选择器，老虎机等"));
-        data.add(createItem("KeyboardLayout", "监听输入法键盘的弹起与隐藏"));
-        data.add(createItem("DragListView", "可拖拽的ListView，拖拽排序"));
-        data.add(createItem("EasyAdapter", "用于RecyclerView的适配器，可支持设置点击、单选和多选模式"));
-        data.add(createItem("TouchGestureDetector", "识别常用手势，对特定场景下的手势识别进行优化"));
-        data.add(createItem("EllipsizeUtils", "高亮关键字，及根据关键字裁剪文字,支持多行"));
-        data.add(createItem("AnimatorUtil", "对AnimatorSet进行封装，便以链式构建动画"));
+        data.add(createItem("StartUp", "入门,体验自定义 View 的快乐!"));
         return data;
     }
 
     private Map<String, String> createItem(String title, String subtitle) {
-        Map<String, String> item = new HashMap<String, String>();
-
+        Map<String, String> item = new HashMap<>();
         item.put(TITLE, title);
         item.put(SUBTITLE, subtitle);
-
         return item;
     }
 
