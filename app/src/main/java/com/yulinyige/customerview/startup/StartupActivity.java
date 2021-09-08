@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.yulinyige.customerview.R;
 
+/**
+ * 体验
+ */
 public class StartupActivity extends Activity {
 
     @Override
